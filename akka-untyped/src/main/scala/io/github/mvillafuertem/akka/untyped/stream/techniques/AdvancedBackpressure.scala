@@ -4,14 +4,14 @@ import java.util.Date
 
 import akka.actor.ActorSystem
 import akka.stream.scaladsl.{Flow, Sink, Source}
-import akka.stream.{ActorMaterializer, OverflowStrategy}
+import akka.stream.{Materializer, OverflowStrategy}
 
 import scala.concurrent.duration._
 
 object AdvancedBackpressure extends App {
 
   implicit val actorSystem: ActorSystem = ActorSystem("AdvancedBackpressure")
-  implicit val actorMaterializer: ActorMaterializer = ActorMaterializer()
+  implicit val actorMaterializer: Materializer = Materializer(actorSystem)
 
   // Control Backpressure
   val controlledFlow = Flow[Int].map(_ * 2).buffer(10, OverflowStrategy.dropHead)

@@ -1,7 +1,7 @@
 package io.github.mvillafuertem.akka.untyped.stream.init
 
 import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
+import akka.stream.Materializer
 import akka.stream.scaladsl.{Flow, Sink, Source}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -11,7 +11,7 @@ import scala.concurrent.Future
 object FirstPrinciples extends App {
 
   implicit val actorSystem: ActorSystem = ActorSystem("FirstPrinciples")
-  implicit val actorMaterializer: ActorMaterializer = ActorMaterializer()
+  implicit val actorMaterializer: Materializer = Materializer(actorSystem)
 
   // Producer
   val source = Source(1 to 10)

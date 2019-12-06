@@ -52,7 +52,7 @@ final class ToDoBehavior(context: ActorContext[Command]) {
 
 object ToDoBehavior {
 
-  //  def apply(id: String)(implicit actorSystem: ActorSystem, actorMaterializer: ActorMaterializer): Behavior[Command] = Behaviors.setup[Command](context => {
+  //  def apply(id: String)(implicit actorSystem: ActorSystem, actorMaterializer: Materializer): Behavior[Command] = Behaviors.setup[Command](context => {
   def apply(id: String): Behavior[Command] = Behaviors.setup[Command](context => {
 
     //    PersistenceQuery(actorSystem).readJournalFor[LeveldbReadJournal](LeveldbReadJournal.Identifier)

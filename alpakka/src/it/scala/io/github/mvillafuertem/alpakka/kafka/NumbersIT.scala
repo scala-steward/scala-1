@@ -7,18 +7,19 @@ import akka.actor.ActorSystem
 import akka.event.{Logging, LoggingAdapter}
 import akka.kafka.scaladsl.{Consumer, Producer}
 import akka.kafka.{ConnectionCheckerSettings, ConsumerSettings, ProducerSettings, Subscriptions}
-import akka.stream.ActorMaterializer
+import akka.stream.{ActorMaterializer, Materializer}
 import akka.stream.scaladsl.{Keep, Source}
 import akka.stream.testkit.scaladsl.TestSink
 import com.dimafeng.testcontainers.DockerComposeContainer
-import com.typesafe.config.{Config, ConfigFactory}
 import io.github.mvillafuertem.alpakka.kafka.NumbersIT.NumbersConfigurationIT
 import org.apache.kafka.clients.producer.ProducerRecord
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers}
+import org.scalatest.flatspec.AnyFlatSpecLike
+import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.wait.strategy.Wait
 
-import scala.concurrent.{Await, ExecutionContextExecutor}
+import scala.concurrent.ExecutionContextExecutor
 import scala.concurrent.duration._
 
 /**
@@ -26,7 +27,7 @@ import scala.concurrent.duration._
  */
 final class NumbersIT extends NumbersConfigurationIT
 with EventConfiguration
-  with FlatSpecLike
+  with AnyFlatSpecLike
   with Matchers
   with ScalaFutures
   with BeforeAndAfterAll {
@@ -34,7 +35,7 @@ with EventConfiguration
   implicit val system: ActorSystem = ActorSystem("KafkaConnectionCheckerSpec")
   implicit val ec: ExecutionContextExecutor = system.dispatcher
   implicit val log: LoggingAdapter = Logging(system, this.getClass)
-  implicit val mat: ActorMaterializer = ActorMaterializer()
+  implicit val mat: Materializer = ActorMaterializer()
 
   behavior of "Numbers IT"
 
@@ -64,7 +65,7 @@ with EventConfiguration
 
     val kafkaProducer = producerSettings.createKafkaProducer()
 
-    val eventualDone = Source(LazyList.from(1 to 1))
+    Source(LazyList.from(1 to 1))
       .map(s => {
         Thread.sleep(1)
         log.info("{}", msg)
@@ -84,11 +85,11 @@ with EventConfiguration
 
   override protected def beforeAll(): Unit = {
 
-    dockerInfrastructure.start()
+    //dockerInfrastructure.start()
     produce()
   }
 
-  override protected def afterAll(): Unit = dockerInfrastructure.stop()
+  override protected def afterAll(): Unit = () //dockerInfrastructure.stop()
 
 }
 

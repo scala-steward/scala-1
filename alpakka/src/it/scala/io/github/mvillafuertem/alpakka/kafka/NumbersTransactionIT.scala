@@ -3,22 +3,24 @@ package io.github.mvillafuertem.alpakka.kafka
 import java.io.File
 import java.nio.charset.StandardCharsets
 
-import akka.{Done, NotUsed}
 import akka.actor.ActorSystem
 import akka.event.{Logging, LoggingAdapter}
 import akka.kafka.ConsumerMessage.PartitionOffset
 import akka.kafka.scaladsl.{Consumer, Producer, Transactional}
 import akka.kafka.{ConsumerMessage, ProducerMessage, Subscriptions}
 import akka.stream.Supervision.{Restart, Stop}
-import akka.stream.scaladsl.{Broadcast, Flow, GraphDSL, Keep, Sink, Source, Zip}
+import akka.stream.scaladsl.{Broadcast, Flow, GraphDSL, Keep, Source, Zip}
 import akka.stream.testkit.scaladsl.StreamTestKit.assertAllStagesStopped
 import akka.stream.testkit.scaladsl.TestSink
-import akka.stream.{ActorAttributes, ActorMaterializer, FlowShape}
+import akka.stream.{ActorAttributes, ActorMaterializer, FlowShape, Materializer}
+import akka.{Done, NotUsed}
 import com.dimafeng.testcontainers.DockerComposeContainer
 import io.github.mvillafuertem.alpakka.kafka.NumbersTransactionIT.NumbersTransactionConfigurationIT
 import org.apache.kafka.clients.producer.ProducerRecord
+import org.scalatest.BeforeAndAfterAll
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers}
+import org.scalatest.flatspec.AnyFlatSpecLike
+import org.scalatest.matchers.should.Matchers
 import org.testcontainers.containers.wait.strategy.Wait
 
 import scala.collection.immutable
@@ -26,7 +28,7 @@ import scala.concurrent.{ExecutionContextExecutor, Future}
 
 class NumbersTransactionIT extends NumbersTransactionConfigurationIT
   with EventConfiguration
-  with FlatSpecLike
+  with AnyFlatSpecLike
   with Matchers
   with ScalaFutures
   with BeforeAndAfterAll {
@@ -34,7 +36,7 @@ class NumbersTransactionIT extends NumbersTransactionConfigurationIT
   implicit val system: ActorSystem = ActorSystem("KafkaConnectionCheckerSpec")
   implicit val ec: ExecutionContextExecutor = system.dispatcher
   implicit val log: LoggingAdapter = Logging(system, this.getClass)
-  implicit val mat: ActorMaterializer = ActorMaterializer()
+  implicit val mat: Materializer = ActorMaterializer()
 
   val sinkTopic = "sink-topic"
   val sourceTopic = "source-topic"
@@ -167,11 +169,11 @@ class NumbersTransactionIT extends NumbersTransactionConfigurationIT
 
   override protected def beforeAll(): Unit = {
 
-    dockerInfrastructure.start()
+    //dockerInfrastructure.start()
     produce()
   }
 
-  override protected def afterAll(): Unit = dockerInfrastructure.stop()
+  override protected def afterAll(): Unit = ()//dockerInfrastructure.stop()
 
 }
 
