@@ -247,7 +247,7 @@ object Dependencies {
     val logback = "1.2.3"
     val postgres = "42.2.9"
     val scalaTest = "3.0.8"
-    val specs2 = "4.8.1"
+    val specs2 = "4.8.2"
     val slick = "3.3.2"
     val tapir = "0.12.12"
     val swaggerUi = "3.24.3"
