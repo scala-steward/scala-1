@@ -6,12 +6,12 @@ import akka.actor.typed.scaladsl.{ActorContext, Behaviors}
 import akka.actor.typed.{ActorRef, Behavior}
 import akka.actor.testkit.typed.scaladsl.{ScalaTestWithActorTestKit, TestProbe}
 import MessageAdapterSpec.Infrastructure.{Closed, Command, Opened, State, Uninitialized}
-import org.scalatest.FlatSpecLike
+import org.scalatest.flatspec.AnyFlatSpecLike
 
 /**
  * @author Miguel Villafuerte
  */
-final class MessageAdapterSpec extends ScalaTestWithActorTestKit with FlatSpecLike {
+final class MessageAdapterSpec extends ScalaTestWithActorTestKit with AnyFlatSpecLike {
 
   import MessageAdapterSpec._
 

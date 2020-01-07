@@ -4,10 +4,12 @@ import java.sql.SQLIntegrityConstraintViolationException
 
 import io.github.mvillafuertem.slick.withtrait.configuration.InfrastructureConfigurationSpec
 import io.github.mvillafuertem.slick.withtrait.model.{EdgeDBO, VertexDBO}
-import org.scalatest.{AsyncFlatSpecLike, BeforeAndAfterEach, Matchers, OptionValues}
+import org.scalatest.{BeforeAndAfterEach, OptionValues}
 
 import scala.concurrent.duration.{FiniteDuration, _}
 import scala.concurrent.{Await, Future}
+import org.scalatest.flatspec.AsyncFlatSpecLike
+import org.scalatest.matchers.should.Matchers
 
 final class RelationalEdgeRepositorySpec extends InfrastructureConfigurationSpec
   with AsyncFlatSpecLike

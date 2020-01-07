@@ -13,10 +13,11 @@ import akka.persistence.typed.{DeleteSnapshotsFailed, PersistenceId, SnapshotFai
 import com.typesafe.config.{Config, ConfigFactory}
 import TodoPersistentFSM.EventSeedBehavior
 import TodoPersistentFSM.EventSeedBehavior._
-import org.scalatest.{FlatSpecLike, OneInstancePerTest}
+import org.scalatest.OneInstancePerTest
+import org.scalatest.flatspec.AnyFlatSpecLike
 
 final class TodoPersistentFSM extends ScalaTestWithActorTestKit(TodoPersistentFSM.conf)
-  with FlatSpecLike
+  with AnyFlatSpecLike
   with OneInstancePerTest {
 
 

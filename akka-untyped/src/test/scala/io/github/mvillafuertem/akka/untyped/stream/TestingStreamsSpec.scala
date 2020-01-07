@@ -8,17 +8,18 @@ import akka.stream.{ActorMaterializer, Attributes, FanOutShape2, FlowShape}
 import akka.stream.{FanOutShape2, FlowShape, Materializer}
 import akka.testkit.{TestKit, TestProbe}
 import akka.{Done, NotUsed}
-import org.scalatest.{BeforeAndAfterAll, WordSpecLike}
+import org.scalatest.BeforeAndAfterAll
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import scala.util.{Failure, Success, Try}
+import org.scalatest.wordspec.AnyWordSpecLike
 
 /**
   * @author Miguel Villafuerte
   */
 final class TestingStreamsSpec extends TestKit(ActorSystem("TestingStreams"))
-  with WordSpecLike
+  with AnyWordSpecLike
   with BeforeAndAfterAll {
 
   implicit val materializer = Materializer(system)

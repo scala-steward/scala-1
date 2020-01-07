@@ -1,8 +1,9 @@
 package io.github.mvillafuertem.advanced.pattern.taglessfinal.basic
 
-import org.scalatest.{AsyncFlatSpecLike, Matchers}
 
 import scala.concurrent.Future
+import org.scalatest.flatspec.AsyncFlatSpecLike
+import org.scalatest.matchers.should.Matchers
 
 class InterpreterAsFutureLanguageBasicSpec extends AsyncFlatSpecLike with Matchers {
 

@@ -1,8 +1,8 @@
 package io.github.mvillafuertem.todo.infrastructure
 
-import org.scalatest.FlatSpecLike
+import org.scalatest.flatspec.AnyFlatSpecLike
 
-final class ToDoReceptionistSpec extends FlatSpecLike {
+final class ToDoReceptionistSpec extends AnyFlatSpecLike {
 
 }
 

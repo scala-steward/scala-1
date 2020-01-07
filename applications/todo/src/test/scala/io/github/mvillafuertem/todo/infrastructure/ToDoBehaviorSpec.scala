@@ -9,16 +9,18 @@ import akka.util.Timeout
 import com.typesafe.config.{Config, ConfigFactory}
 import ToDoBehavior.{Close, GetToDo, Open, State}
 import io.github.mvillafuertem.todo.domain.ToDo
-import org.scalatest.{BeforeAndAfterAll, FlatSpecLike, Matchers, OneInstancePerTest}
+import org.scalatest.{BeforeAndAfterAll, OneInstancePerTest}
 
 import scala.concurrent.duration._
 import scala.language.postfixOps
+import org.scalatest.flatspec.AnyFlatSpecLike
+import org.scalatest.matchers.should.Matchers
 
 /**
  * @author Miguel Villafuerte
  */
 final class ToDoBehaviorSpec extends ScalaTestWithActorTestKit(ToDoBehaviorSpec.conf)
-  with FlatSpecLike
+  with AnyFlatSpecLike
   with Matchers
   with BeforeAndAfterAll
   with OneInstancePerTest {

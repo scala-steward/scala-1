@@ -2,10 +2,11 @@ package io.github.mvillafuertem.cats.traverse
 
 import cats.data._
 import cats.implicits._
-import org.scalatest.{AsyncFlatSpec, Matchers}
 
 import scala.concurrent.Future
 import scala.util.Random
+import org.scalatest.flatspec.AsyncFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 // https://gist.github.com/rtitle/f73d35e79a2f95871bca27d24be3a805
 final class TraverseSpec extends AsyncFlatSpec with Matchers {
