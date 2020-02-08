@@ -251,7 +251,7 @@ object Dependencies {
     val akkaPersistenceJdbc = "3.5.2"
     val alpakkaSlick = "1.1.2"
     val cats = "2.1.0"
-    val circe = "0.12.3"
+    val circe = "0.13.0"
     val h2 = "1.4.200"
     val jsoniter = "2.1.6"
     val dijon = "0.3.0"
