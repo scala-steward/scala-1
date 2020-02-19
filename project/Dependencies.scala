@@ -253,7 +253,7 @@ object Dependencies {
     val cats = "2.1.0"
     val circe = "0.12.3"
     val h2 = "1.4.200"
-    val jsoniter = "2.1.6"
+    val jsoniter = "2.1.7"
     val dijon = "0.3.0"
     val leveldbjniAll = "1.8"
     val logback = "1.2.3"
